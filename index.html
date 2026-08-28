@@ -1,30 +1,489 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <title>Mis Alojamientos en Tenerife</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feel at Home Tenerife | Apartamentos con Encanto</title>
     <style>
-        body { font-family: Arial; background: #f5f5f5; }
-        header { background: #8B7355; color: white; text-align: center; padding: 50px; }
-        .card { background: white; margin: 20px; padding: 20px; border-radius: 10px; }
-        .btn { background: #8B7355; color: white; padding: 10px 20px; text-decoration: none; }
+        /* --- ESTILOS GENERALES --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: #333;
+            line-height: 1.6;
+            background: #fff;
+        }
+        a { text-decoration: none; color: inherit; }
+        img { max-width: 100%; height: auto; }
+
+        /* --- HEADER --- */
+        header {
+            background: #fff;
+            padding: 20px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #8B7355;
+        }
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        nav a {
+            font-size: 14px;
+            text-transform: uppercase;
+            color: #666;
+            transition: color 0.3s;
+        }
+        nav a:hover { color: #8B7355; }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://www.feelathometenerife.com/wp-content/uploads/2019/08/1-1.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+        }
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+        .btn {
+            background: #8B7355;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+        .btn:hover { background: #6B5B47; }
+
+        /* --- SECCIÓN "WHAT IS FEELING AT HOME?" --- */
+        .section {
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+        .section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #8B7355;
+            margin-bottom: 30px;
+        }
+        .section p {
+            text-align: center;
+            font-size: 1.1rem;
+            color: #555;
+            max-width: 800px;
+            margin: 0 auto 40px;
+        }
+
+        /* --- GALERÍA DE IMÁGENES --- */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 10px;
+            margin: 40px 0;
+        }
+        .gallery img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+        .gallery img:hover { transform: scale(1.03); }
+
+        /* --- SECCIÓN "OUR SPACES" --- */
+        .spaces-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        .space-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        .space-card:hover { transform: translateY(-5px); }
+        .space-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+        .space-card-content {
+            padding: 20px;
+            text-align: center;
+        }
+        .space-card h3 {
+            font-size: 1.3rem;
+            color: #8B7355;
+            margin-bottom: 10px;
+        }
+        .space-card .price {
+            font-weight: bold;
+            color: #666;
+            margin-bottom: 10px;
+        }
+        .space-card .guests {
+            color: #999;
+            font-size: 0.9rem;
+        }
+
+        /* --- TESTIMONIO --- */
+        .testimonial {
+            background: #f9f9f9;
+            padding: 40px 20px;
+            text-align: center;
+            margin: 60px 0;
+        }
+        .testimonial blockquote {
+            font-style: italic;
+            font-size: 1.2rem;
+            color: #555;
+            max-width: 800px;
+            margin: 0 auto 20px;
+        }
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+        .testimonial-author img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+        }
+        .testimonial-info {
+            text-align: left;
+        }
+        .testimonial-info strong { color: #8B7355; }
+
+        /* --- SECCIÓN "TRUST US" / "DISCOVER" / "ABOUT US" --- */
+        .info-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+            margin: 60px 0;
+        }
+        .info-section img {
+            width: 100%;
+            border-radius: 8px;
+        }
+        .info-section h2 {
+            text-align: left;
+            margin-bottom: 20px;
+        }
+        .info-section p {
+            text-align: left;
+            margin-bottom: 20px;
+        }
+        .info-section .btn {
+            display: inline-block;
+        }
+
+        /* --- CONTACTO --- */
+        .contact {
+            background: #f9f9f9;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        .contact-info {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .contact-info p {
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        .contact-info a {
+            color: #8B7355;
+            font-weight: bold;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background: #8B7355;
+            color: white;
+            padding: 40px 0 20px;
+            text-align: center;
+        }
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            padding: 0 20px;
+        }
+        .footer-section h3 {
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+        .footer-section a {
+            display: block;
+            margin-bottom: 8px;
+            color: #ddd;
+        }
+        .footer-section a:hover { color: white; }
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .social-icons a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+        .social-icons a:hover { background: rgba(255,255,255,0.3); }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .header-container { flex-direction: column; gap: 15px; }
+            nav ul { gap: 15px; }
+            .hero h1 { font-size: 2.5rem; }
+            .info-section { grid-template-columns: 1fr; }
+            .footer-content { grid-template-columns: 1fr; }
+        }
     </style>
+    <!-- Fuente de Google -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+
+    <!-- HEADER -->
     <header>
-        <h1>Mis Alojamientos en Tenerife</h1>
-        <p>¡Bienvenido a mi web!</p>
+        <div class="header-container">
+            <div class="logo">FEEL AT HOME TENERIFE</div>
+            <nav>
+                <ul>
+                    <li><a href="#rooms">ROOMS</a></li>
+                    <li><a href="#about">ABOUT US</a></li>
+                    <li><a href="#blog">BLOG</a></li>
+                    <li><a href="#contact">CONTACT</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
-    <div class="card">
-        <h2>🏡 Alojamiento 1</h2>
-        <p>Descripción del alojamiento.</p>
-        <a href="#" class="btn">Ver en Airbnb</a>
-    </div>
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <h1>FEEL AT HOME TENERIFE</h1>
+        <p>APARTMENTS WITH LOVE</p>
+        <a href="#rooms" class="btn">See more</a>
+    </section>
 
-    <div class="card">
-        <h2>🏡 Alojamiento 2</h2>
-        <p>Descripción del alojamiento.</p>
-        <a href="#" class="btn">Ver en Airbnb</a>
-    </div>
+    <!-- SECCIÓN "WHAT IS FEELING AT HOME?" -->
+    <section class="section">
+        <h2>WHAT IS FEELING AT HOME?</h2>
+        <p>It is that magical experience of arriving at a new place and immediately perceiving that it is familiar to you. Stay where you've never been before and feel that you don't want to leave anymore. In Feel at home Tenerife we offer you charming spaces where you can live the experience of feeling comfortable, safe and in a home, while discovering and enjoying our wonderful island.</p>
+
+        <!-- GALERÍA -->
+        <div class="gallery">
+            <img src="https://www.feelathometenerife.com/wp-content/uploads/2019/08/21-605x465.jpg" alt="Alojamiento 1">
+            <img src="https://www.feelathometenerife.com/wp-content/uploads/2019/08/17-605x465.jpg" alt="Alojamiento 2">
+            <img src="https://www.feelathometenerife.com/wp-content/uploads/2019/08/10-605x465.jpg" alt="Alojamiento 3">
+            <img src="https://www.feelathometenerife.com/wp-content/uploads/2019/08/4-605x465.jpg" alt="Alojamiento 4">
+            <img src="https://www.feelathometenerife.com/wp-content/uploads/2019/08/3-605x465.jpg" alt="Alojamiento 5">
+            <img src="https://www.feelathometenerife.com/wp-content/uploads/2019/08/2-605x465.jpg" alt="Alojamiento 6">
+        </div>
+    </section>
+
+    <!-- SECCIÓN "WELCOME TO TENERIFE" -->
+    <section class="section">
+        <h2>WELCOME TO TENERIFE</h2>
+        <div class="info-section">
+            <div>
+                <p>Tenerife, within the Canary Islands, is an island of contrasts. Its microclimates, landscapes, traditions and inhabitants, are an inexhaustible source of unique and unrepeatable experiences. At the same time, in an extraordinary territory and environment, it offers you the possibility of resting and disconnecting from everyday life as well as performing various activities in nature. Therefore, and waiting that you discover it for yourself, welcome to our island that during your stay will also be your home.</p>
+            </div>
+            <div>
+                <img src="https://www.feelathometenerife.com/wp-content/uploads/2019/12/20180819_105805.jpg" alt="Tenerife paisaje">
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN "OUR SPACES" -->
+    <section class="section" id="rooms">
+        <h2>OUR SPACES</h2>
+        <p>Visit them and choose the one that most connects with your wishes.</p>
+
+        <div class="spaces-grid">
+            <!-- Tarjeta 1 -->
+            <div class="space-card">
+                <img src="https://www.feelathometenerife.com/wp-content/uploads/2019/03/PRINCIPAL2-605x605.jpg" alt="Loft, pool & garden, Tacoronte">
+                <div class="space-card-content">
+                    <div class="price">70€ per night</div>
+                    <h3>Loft, pool & garden, Tacoronte</h3>
+                    <div class="guests">2 guests</div>
+                </div>
+            </div>
+
+            <!-- Tarjeta 2 -->
+            <div class="space-card">
+                <img src="https://www.feelathometenerife.com/wp-content/uploads/2019/08/MG_1292-605x605.jpg" alt="Penthouse, terrace & garden en Tacoronte">
+                <div class="space-card-content">
+                    <div class="price">60€ per night</div>
+                    <h3>Penthouse, terrace & garden en Tacoronte</h3>
+                    <div class="guests">2 guests</div>
+                </div>
+            </div>
+
+            <!-- Tarjeta 3 -->
+            <div class="space-card">
+                <img src="https://www.feelathometenerife.com/wp-content/uploads/2019/08/1-2-605x605.png" alt="Starshine, balcony & seaview, Santa Cruz">
+                <div class="space-card-content">
+                    <div class="price">60€ per night</div>
+                    <h3>Starshine, balcony & seaview, Santa Cruz</h3>
+                    <div class="guests">2 guests</div>
+                </div>
+            </div>
+
+            <!-- Tarjeta 4 -->
+            <div class="space-card">
+                <img src="https://www.feelathometenerife.com/wp-content/uploads/2019/08/MG_7946-605x605.jpg" alt="Attic, pool & seaview, La Quinta">
+                <div class="space-card-content">
+                    <div class="price">65€ per night</div>
+                    <h3>Attic, pool & seaview, La Quinta</h3>
+                    <div class="guests">2 guests</div>
+                </div>
+            </div>
+
+            <!-- Tarjeta 5 -->
+            <div class="space-card">
+                <img src="https://www.feelathometenerife.com/wp-content/uploads/2019/08/starfish1-605x605.png" alt="Starfish, balcony & seaview, Santa Cruz">
+                <div class="space-card-content">
+                    <div class="price">50€ per night</div>
+                    <h3>Starfish, balcony & seaview, Santa Cruz</h3>
+                    <div class="guests">2 guests</div>
+                </div>
+            </div>
+
+            <!-- Tarjeta 6 -->
+            <div class="space-card">
+                <img src="https://www.feelathometenerife.com/wp-content/uploads/2019/08/radazul1-605x605.png" alt="Stunning seaview, pool & terrace, Radazul">
+                <div class="space-card-content">
+                    <div class="price">150€ per night</div>
+                    <h3>Stunning seaview, pool & terrace, Radazul</h3>
+                    <div class="guests">6 guests</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIO -->
+    <section class="testimonial">
+        <blockquote>
+            "Always a treat to deal with Daniel, Edu & Moma. Our favourite connoisseurs of Tenerife and always helpful."
+        </blockquote>
+        <div class="testimonial-author">
+            <img src="https://www.feelathometenerife.com/wp-content/uploads/2020/02/theoymanuela-394x394.jpg" alt="Miranda B. and Theo">
+            <div class="testimonial-info">
+                <strong>Miranda B. and Theo</strong>
+                <p>Berlin, Germany</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN "TRUST US" -->
+    <section class="section">
+        <h2>TRUST US</h2>
+        <p>We like to wait and welcome you to the new home, learn about your travel plans and meet your wishes. We want you to enjoy the best holidays and that is why you can count on us at all times. If you have any special needs or wishes, do not hesitate to let us know and we will try to help you.</p>
+        <div style="text-align: center; margin-top: 20px;">
+            <a href="#" class="btn">Discover what makes us special</a>
+        </div>
+    </section>
+
+    <!-- SECCIÓN "DISCOVER OUR ISLAND" -->
+    <section class="section">
+        <h2>DISCOVER OUR ISLAND</h2>
+        <p>Tenerife has hundreds of places to discover, from beaches and cliffs to forests, natural pools and moon landscapes. Trust us if you want to receive advice and help on your vacation. You will have access to detailed information and, personally we will be happy to give you our favorite recommendations.</p>
+        <div style="text-align: center; margin-top: 20px;">
+            <a href="#" class="btn">Go to our blog</a>
+        </div>
+    </section>
+
+    <!-- SECCIÓN "ABOUT US" -->
+    <section class="section" id="about">
+        <h2>ABOUT US</h2>
+        <p>Feel at home Tenerife is a family project in which we have invested a lot of work, love and enthusiasm. We like to take care of each space in the same way as if it were our own home and our guests as if they were true friends. Visit us and be part of our family.</p>
+        <div style="text-align: center; margin-top: 20px;">
+            <a href="#" class="btn">Read more about us!</a>
+        </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section class="contact" id="contact">
+        <div class="contact-info">
+            <p><strong>Find us on Airbnb:</strong></p>
+            <p><a href="https://www.airbnb.es/users/4363825/listings" target="_blank">Visit our profile</a></p>
+            <br>
+            <p><strong>Email:</strong> <a href="mailto:hello@feelathometenerife.com">hello@feelathometenerife.com</a></p>
+            <p><strong>Phone:</strong> <a href="tel:+34661571499">+34 661 571 499</a></p>
+            <p><strong>Address:</strong> <a href="https://goo.gl/maps/7NYiTezN6gtGdx8a6" target="_blank">Calle Arquitecto Marrero Regalado, 5. Santa Cruz de Tenerife</a></p>
+            <br>
+            <p><strong>Payments accepted:</strong> PayPal</p>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>LAST NEWS</h3>
+                <a href="#">You will be back, we will be back!</a>
+                <a href="#">Tenerife. The island of eternal spring.</a>
+                <a href="#">Of natural pools and puddles.</a>
+            </div>
+            <div class="footer-section">
+                <h3>LEGAL</h3>
+                <a href="#">Aviso Legal</a>
+                <a href="#">Política de Privacidad</a>
+                <a href="#">Política de Cookies</a>
+            </div>
+        </div>
+        <div class="social-icons">
+            <a href="https://www.facebook.com/Tenerife-by-Daniel-Chamillard-139222146254365/" target="_blank">f</a>
+            <a href="https://www.instagram.com/feelathometenerife" target="_blank">ig</a>
+        </div>
+        <p style="margin-top: 20px; font-size: 0.9rem;">© 2026 Feel at Home Tenerife. All rights reserved.</p>
+    </footer>
+
 </body>
 </html>
