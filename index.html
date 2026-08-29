@@ -4,386 +4,516 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Feel at Home Tenerife</title>
-  <meta name="description" content="Alojamientos especiales en Tenerife">
+  <title>Feel at Home Tenerife | Apartments with love</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --verde: #315b52;
-      --beige: #f5f1e8;
-      --oscuro: #252525;
-      --blanco: #ffffff;
+      --cream: #f5f1e9;
+      --sand: #e8ddca;
+      --terracotta: #b86f50;
+      --olive: #596653;
+      --dark: #30352f;
+      --white: #fffdf9;
+      --line: rgba(48, 53, 47, .16);
     }
 
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
-      font-family: Arial, sans-serif;
-      color: var(--oscuro);
-      background: var(--beige);
-      line-height: 1.6;
+      background: var(--cream);
+      color: var(--dark);
+      font-family: Montserrat, sans-serif;
+    }
+
+    h1, h2, h3 {
+      font-family: "Cormorant Garamond", serif;
+      font-weight: 600;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .topbar {
+      background: var(--olive);
+      color: white;
+      text-align: center;
+      padding: 9px;
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
     }
 
     header {
-      min-height: 90vh;
+      min-height: 760px;
+      position: relative;
       background:
-        linear-gradient(rgba(0,0,0,.35), rgba(0,0,0,.4)),
-        url("imagenes/tenerife.jpg") center/cover;
+        linear-gradient(90deg, rgba(36, 42, 36, .68), rgba(36, 42, 36, .08)),
+        url("https://www.feelathometenerife.com/wp-content/uploads/2019/12/20180819_105805.jpg")
+        center / cover;
       color: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 30px;
-    }
-
-    .hero {
-      max-width: 800px;
-    }
-
-    .logo {
-      max-width: 260px;
-      margin-bottom: 30px;
-      filter: brightness(0) invert(1);
-    }
-
-    h1 {
-      font-size: clamp(2.2rem, 6vw, 4.8rem);
-      margin-bottom: 15px;
-    }
-
-    .hero p {
-      font-size: 1.25rem;
-      margin-bottom: 30px;
-    }
-
-    .boton {
-      display: inline-block;
-      background: var(--verde);
-      color: white;
-      padding: 14px 28px;
-      border-radius: 30px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: .3s;
-    }
-
-    .boton:hover {
-      background: #23443d;
-      transform: translateY(-2px);
     }
 
     nav {
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      background: var(--blanco);
-      box-shadow: 0 2px 10px rgba(0,0,0,.1);
+      position: absolute;
+      top: 42px;
+      left: 0;
+      right: 0;
       display: flex;
-      justify-content: center;
-      gap: 10px;
-      padding: 14px;
-      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 7%;
+      z-index: 5;
     }
 
-    nav button {
-      border: 0;
-      background: transparent;
-      color: var(--verde);
-      padding: 10px 16px;
-      cursor: pointer;
-      font-weight: bold;
-      border-radius: 20px;
+    .brand {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 29px;
+      line-height: .8;
+      letter-spacing: 1px;
     }
 
-    nav button:hover,
-    nav button.activo {
-      background: var(--verde);
-      color: white;
-    }
-
-    main {
-      max-width: 1100px;
-      margin: auto;
-      padding: 60px 20px;
-    }
-
-    .pestana {
-      display: none;
-      animation: aparecer .4s ease;
-    }
-
-    .pestana.activa {
+    .brand span {
       display: block;
+      font-family: Montserrat, sans-serif;
+      font-size: 9px;
+      letter-spacing: 4px;
+      margin-top: 10px;
     }
 
-    @keyframes aparecer {
-      from {
-        opacity: 0;
-        transform: translateY(10px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    .menu {
+      display: flex;
+      gap: 28px;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+    }
+
+    .menu a {
+      transition: .3s;
+    }
+
+    .menu a:hover {
+      color: #e3b18e;
+    }
+
+    .hero {
+      position: absolute;
+      left: 9%;
+      bottom: 115px;
+      max-width: 650px;
+    }
+
+    .eyebrow {
+      color: #e1b18e;
+      font-size: 12px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      margin-bottom: 22px;
+    }
+
+    .hero h1 {
+      font-size: clamp(58px, 8vw, 105px);
+      line-height: .82;
+      margin-bottom: 28px;
+    }
+
+    .hero p {
+      max-width: 460px;
+      font-size: 16px;
+      line-height: 1.8;
+      color: #f6eee4;
+    }
+
+    .button {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 15px 28px;
+      background: var(--terracotta);
+      color: white;
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      transition: .3s;
+    }
+
+    .button:hover {
+      background: #96533b;
+      transform: translateY(-2px);
+    }
+
+    section {
+      padding: 115px 8%;
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 90px;
+      align-items: center;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .section-label {
+      color: var(--terracotta);
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
     }
 
     h2 {
-      color: var(--verde);
-      text-align: center;
-      font-size: 2.2rem;
+      color: var(--olive);
+      font-size: clamp(45px, 5vw, 75px);
+      line-height: .9;
       margin-bottom: 25px;
     }
 
+    .text {
+      color: #62655d;
+      font-size: 15px;
+      line-height: 2;
+    }
+
+    .photo {
+      width: 100%;
+      height: 520px;
+      object-fit: cover;
+    }
+
     .intro {
-      max-width: 750px;
-      margin: 0 auto 35px;
-      text-align: center;
+      background: var(--white);
     }
 
-    .tarjetas {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 25px;
+    .spaces {
+      background: var(--sand);
     }
 
-    .tarjeta {
-      background: white;
-      border-radius: 14px;
-      overflow: hidden;
-      box-shadow: 0 5px 18px rgba(0,0,0,.1);
+    .spaces-header {
+      max-width: 1200px;
+      margin: 0 auto 55px;
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
     }
 
-    .tarjeta img {
-      width: 100%;
-      height: 210px;
-      object-fit: cover;
+    .spaces-header h2 {
+      margin-bottom: 0;
     }
 
-    .tarjeta-contenido {
-      padding: 20px;
-    }
-
-    .tarjeta h3 {
-      color: var(--verde);
-      margin-bottom: 8px;
-    }
-
-    .galeria {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 15px;
-    }
-
-    .galeria img {
-      width: 100%;
-      height: 220px;
-      object-fit: cover;
-      border-radius: 12px;
-    }
-
-    .contacto {
-      text-align: center;
-      background: white;
-      padding: 35px 20px;
-      border-radius: 15px;
-      max-width: 650px;
+    .spaces-grid {
+      max-width: 1200px;
       margin: auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .card {
+      background: var(--white);
+      transition: .35s;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+    }
+
+    .card img {
+      width: 100%;
+      height: 285px;
+      object-fit: cover;
+    }
+
+    .card-content {
+      padding: 23px;
+    }
+
+    .card h3 {
+      color: var(--olive);
+      font-size: 29px;
+      line-height: 1;
+      margin-bottom: 13px;
+    }
+
+    .card p {
+      color: #75756d;
+      font-size: 12px;
+      line-height: 1.7;
+    }
+
+    .price {
+      color: var(--terracotta);
+      font-size: 12px;
+      letter-spacing: 1px;
+      margin-top: 18px;
+      text-transform: uppercase;
+    }
+
+    .about {
+      background: var(--olive);
+      color: white;
+    }
+
+    .about h2 {
+      color: white;
+    }
+
+    .about .text {
+      color: #e8e6dc;
+    }
+
+    .about .photo {
+      height: 450px;
+    }
+
+    .quote {
+      background: var(--white);
+      text-align: center;
+      padding: 105px 20px;
+    }
+
+    .quote p {
+      max-width: 720px;
+      margin: auto;
+      color: var(--olive);
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(32px, 4vw, 52px);
+      line-height: 1;
+    }
+
+    .quote small {
+      display: block;
+      margin-top: 25px;
+      color: var(--terracotta);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-size: 10px;
     }
 
     footer {
-      background: var(--verde);
+      background: #292f2a;
       color: white;
       text-align: center;
-      padding: 25px 15px;
+      padding: 55px 20px;
     }
 
-    footer a {
-      color: white;
+    footer .brand {
+      margin-bottom: 20px;
+    }
+
+    footer p {
+      color: #c9c9bd;
+      font-size: 12px;
+      line-height: 2;
+    }
+
+    @media (max-width: 800px) {
+      header {
+        min-height: 680px;
+      }
+
+      nav {
+        top: 25px;
+        padding: 0 6%;
+      }
+
+      .menu {
+        display: none;
+      }
+
+      .hero {
+        left: 7%;
+        right: 7%;
+        bottom: 70px;
+      }
+
+      section {
+        padding: 75px 7%;
+      }
+
+      .split,
+      .spaces-grid {
+        grid-template-columns: 1fr;
+        gap: 38px;
+      }
+
+      .photo,
+      .about .photo {
+        height: 350px;
+      }
+
+      .spaces-header {
+        display: block;
+      }
+
+      .spaces-header .button {
+        margin-top: 25px;
+      }
     }
   </style>
 </head>
 
 <body>
 
-  <header>
+  <div class="topbar">
+    Apartments with love · Tenerife
+  </div>
+
+  <header id="inicio">
+    <nav>
+      <a href="#inicio" class="brand">
+        FEEL AT HOME
+        <span>TENERIFE</span>
+      </a>
+
+      <div class="menu">
+        <a href="#concepto">Nuestra esencia</a>
+        <a href="#espacios">Alojamientos</a>
+        <a href="#isla">Tenerife</a>
+        <a href="#contacto">Contacto</a>
+      </div>
+    </nav>
+
     <div class="hero">
-      <!-- Si tienes logo, guárdalo como imagenes/logo.png -->
-      <img src="imagenes/logo.png" alt="Feel at Home Tenerife" class="logo">
-
-      <h1>Siéntete como en casa en Tenerife</h1>
-      <p>Alojamientos únicos para disfrutar de la isla de una forma especial.</p>
-
-      <a class="boton" href="TU_ENLACE_DE_AIRBNB" target="_blank">
-        Ver alojamientos en Airbnb
+      <div class="eyebrow">Tu hogar en la isla</div>
+      <h1>Feel at<br>home.</h1>
+      <p>
+        Espacios con encanto donde sentirte cómodo, seguro y como en casa
+        mientras descubres Tenerife.
+      </p>
+      <a class="button" href="TU_ENLACE_DE_AIRBNB" target="_blank">
+        Ver alojamientos
       </a>
     </div>
   </header>
 
-  <nav>
-    <button class="activo" onclick="mostrarPestana('inicio', this)">Inicio</button>
-    <button onclick="mostrarPestana('alojamientos', this)">Alojamientos</button>
-    <button onclick="mostrarPestana('galeria', this)">Galería</button>
-    <button onclick="mostrarPestana('tenerife', this)">Tenerife</button>
-    <button onclick="mostrarPestana('contacto', this)">Contacto</button>
-  </nav>
-
-  <main>
-
-    <section id="inicio" class="pestana activa">
-      <h2>Bienvenidos</h2>
-      <p class="intro">
-        Descubre nuestros alojamientos en Tenerife y disfruta de una estancia
-        cómoda, tranquila y auténtica.
-      </p>
-
-      <div style="text-align:center;">
-        <a class="boton" href="TU_ENLACE_DE_AIRBNB" target="_blank">
-          Reservar ahora
-        </a>
-      </div>
-    </section>
-
-    <section id="alojamientos" class="pestana">
-      <h2>Nuestros alojamientos</h2>
-
-      <div class="tarjetas">
-        <article class="tarjeta">
-          <img src="imagenes/alojamiento-1.jpg" alt="Alojamiento en Tenerife">
-          <div class="tarjeta-contenido">
-            <h3>Alojamiento junto al mar</h3>
-            <p>Un espacio ideal para descansar y disfrutar de la costa.</p>
-            <br>
-            <a class="boton" href="TU_ENLACE_DE_AIRBNB" target="_blank">
-              Ver en Airbnb
-            </a>
-          </div>
-        </article>
-
-        <article class="tarjeta">
-          <img src="imagenes/alojamiento-2.jpg" alt="Apartamento en Tenerife">
-          <div class="tarjeta-contenido">
-            <h3>Apartamento con encanto</h3>
-            <p>Comodidad, tranquilidad y una ubicación perfecta.</p>
-            <br>
-            <a class="boton" href="TU_ENLACE_DE_AIRBNB" target="_blank">
-              Ver en Airbnb
-            </a>
-          </div>
-        </article>
-
-        <article class="tarjeta">
-          <img src="imagenes/alojamiento-3.jpg" alt="Casa vacacional en Tenerife">
-          <div class="tarjeta-contenido">
-            <h3>Casa para disfrutar</h3>
-            <p>Todo lo necesario para vivir una experiencia inolvidable.</p>
-            <br>
-            <a class="boton" href="TU_ENLACE_DE_AIRBNB" target="_blank">
-              Ver en Airbnb
-            </a>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section id="galeria" class="pestana">
-      <h2>Galería</h2>
-
-      <div class="galeria">
-        <img src="imagenes/foto-1.jpg" alt="Paisaje de Tenerife">
-        <img src="imagenes/foto-2.jpg" alt="Interior del alojamiento">
-        <img src="imagenes/foto-3.jpg" alt="Costa de Tenerife">
-        <img src="imagenes/foto-4.jpg" alt="Naturaleza de Tenerife">
-        <img src="imagenes/foto-5.jpg" alt="Terraza del alojamiento">
-        <img src="imagenes/foto-6.jpg" alt="Atardecer en Tenerife">
-      </div>
-    </section>
-
-    <section id="tenerife" class="pestana">
-      <h2>Descubre Tenerife</h2>
-
-      <p class="intro">
-        Tenerife ofrece playas, montañas, pueblos con encanto, gastronomía,
-        naturaleza y algunos de los paisajes más espectaculares de Canarias.
-      </p>
-
-      <div class="tarjetas">
-        <article class="tarjeta">
-          <img src="imagenes/anaga.jpg" alt="Parque Rural de Anaga">
-          <div class="tarjeta-contenido">
-            <h3>Anaga</h3>
-            <p>Senderos, montañas y paisajes únicos en el norte de la isla.</p>
-          </div>
-        </article>
-
-        <article class="tarjeta">
-          <img src="imagenes/teide.jpg" alt="Parque Nacional del Teide">
-          <div class="tarjeta-contenido">
-            <h3>El Teide</h3>
-            <p>Un lugar imprescindible para cualquier visitante de Tenerife.</p>
-          </div>
-        </article>
-
-        <article class="tarjeta">
-          <img src="imagenes/playa.jpg" alt="Playa de Tenerife">
-          <div class="tarjeta-contenido">
-            <h3>Playas y costa</h3>
-            <p>Relájate y disfruta del clima privilegiado de la isla.</p>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section id="contacto" class="pestana">
-      <h2>Contacto</h2>
-
-      <div class="contacto">
-        <p>
-          ¿Quieres más información sobre nuestros alojamientos?
+  <section class="intro" id="concepto">
+    <div class="split">
+      <div>
+        <div class="section-label">¿Qué significa sentirse en casa?</div>
+        <h2>Un lugar<br>para quedarse.</h2>
+        <p class="text">
+          Es esa experiencia mágica de llegar a un sitio nuevo y sentir
+          inmediatamente que es familiar. En Feel at Home Tenerife cuidamos
+          cada espacio con amor para que puedas descansar, desconectar y vivir
+          la isla a tu manera.
         </p>
+      </div>
 
-        <br>
+      <img class="photo"
+        src="https://www.feelathometenerife.com/wp-content/uploads/2020/02/prueba-1.jpg"
+        alt="Interior acogedor de uno de nuestros alojamientos">
+    </div>
+  </section>
 
-        <a class="boton" href="TU_ENLACE_DE_AIRBNB" target="_blank">
-          Contactar y reservar en Airbnb
+  <section class="spaces" id="espacios">
+    <div class="spaces-header">
+      <div>
+        <div class="section-label">Nuestros espacios</div>
+        <h2>Elige tu lugar.</h2>
+      </div>
+
+      <a class="button" href="TU_ENLACE_DE_AIRBNB" target="_blank">
+        Ver todos
+      </a>
+    </div>
+
+    <div class="spaces-grid">
+
+      <article class="card">
+        <img src="https://www.feelathometenerife.com/wp-content/uploads/2020/02/prueba-1.jpg"
+          alt="Loft con piscina y jardín en Tacoronte">
+        <div class="card-content">
+          <h3>Loft, pool<br>& garden</h3>
+          <p>Tacoronte · 2 huéspedes</p>
+          <div class="price">Desde 70 € / noche</div>
+        </div>
+      </article>
+
+      <article class="card">
+        <img src="https://www.feelathometenerife.com/wp-content/uploads/2018/12/bellevue_room3.jpg"
+          alt="Apartamento con terraza en Tenerife">
+        <div class="card-content">
+          <h3>Penthouse,<br>terrace & garden</h3>
+          <p>Tacoronte · 2 huéspedes</p>
+          <div class="price">Desde 60 € / noche</div>
+        </div>
+      </article>
+
+      <article class="card">
+        <img src="https://www.feelathometenerife.com/wp-content/uploads/2020/02/WhatsApp-Image-2020-02-10-at-19.38.56.jpg"
+          alt="Apartamento con vistas al mar">
+        <div class="card-content">
+          <h3>Starshine,<br>balcony & seaview</h3>
+          <p>Santa Cruz · 2 huéspedes</p>
+          <div class="price">Desde 60 € / noche</div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <section class="about" id="isla">
+    <div class="split">
+      <img class="photo"
+        src="https://www.feelathometenerife.com/wp-content/uploads/2020/02/anagareservabiosfera.jpg"
+        alt="Paisaje natural de Tenerife">
+
+      <div>
+        <div class="section-label">Bienvenidos a Tenerife</div>
+        <h2>Una isla de contrastes.</h2>
+        <p class="text">
+          Playas, bosques, piscinas naturales, pueblos llenos de historia,
+          paisajes volcánicos y una gastronomía extraordinaria. Te ayudaremos
+          a descubrir nuestros rincones favoritos.
+        </p>
+        <a class="button" href="TU_ENLACE_DE_AIRBNB" target="_blank">
+          Planifica tu estancia
         </a>
       </div>
-    </section>
+    </div>
+  </section>
 
-  </main>
-
-  <footer>
-    <p>© 2026 Feel at Home Tenerife</p>
+  <section class="quote">
     <p>
-      <a href="TU_ENLACE_DE_AIRBNB" target="_blank">
-        Ver perfil de Airbnb
-      </a>
+      “Queremos que disfrutes de las mejores vacaciones y que nuestra casa
+      también sea tu casa.”
+    </p>
+    <small>Feel at Home Tenerife</small>
+  </section>
+
+  <footer id="contacto">
+    <div class="brand">
+      FEEL AT HOME
+      <span>TENERIFE</span>
+    </div>
+
+    <p>
+      Un proyecto familiar creado con trabajo, amor y entusiasmo.
+    </p>
+
+    <a class="button" href="TU_ENLACE_DE_AIRBNB" target="_blank">
+      Visítanos en Airbnb
+    </a>
+
+    <p style="margin-top:30px;">
+      © 2026 Feel at Home Tenerife
     </p>
   </footer>
-
-  <script>
-    function mostrarPestana(id, boton) {
-      document.querySelectorAll(".pestana").forEach(function(seccion) {
-        seccion.classList.remove("activa");
-      });
-
-      document.querySelectorAll("nav button").forEach(function(btn) {
-        btn.classList.remove("activo");
-      });
-
-      document.getElementById(id).classList.add("activa");
-      boton.classList.add("activo");
-
-      window.scrollTo({
-        top: document.querySelector("nav").offsetTop,
-        behavior: "smooth"
-      });
-    }
-  </script>
 
 </body>
 </html>
